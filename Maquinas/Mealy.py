@@ -81,7 +81,6 @@ class Mealy(object):
         arquivo.write((" ".join(self.get_finais())) + '\n')
         arquivo.write((" ".join(self.get_alfabetoSaida())) + '\n')
 
-        print(self.get_transicao())
         for trans in self.get_transicao():
             arquivo.write((" ".join(trans)) + '\n')
 

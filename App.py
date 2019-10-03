@@ -55,6 +55,8 @@ def main(argv):
             transicao = []
             while arqEntrada.readline() != '':
                 linha = arqEntrada.readline()[:-1].split(' ')
+                print(linha)
+
                 transicao.append(linha)
             mealy.set_transicao(transicao)
             saidaConverte = mealy.converte()
