@@ -85,21 +85,18 @@ class Moore(object):
         alfabetoSaida = arqEntrada.readline().rstrip('\n').split(' ')
         self.set_alfabetoSaida(alfabetoSaida)
 
-        transicaoEntrada = []
+        transicao= []
         for linha in arqEntrada.readlines():
             linha = linha.rstrip('\n')
-            transicaoEntrada.append(linha.split(' '))
-            if linha == '-----':
-                transicaoEntrada.remove(linha.split(' '))
-                self.set_transicaoEntrada(transicaoEntrada)
+            if linha != '':
+                transicao.append(linha.split(' '))
 
-        transicaoSaida = []
-        for linha in arqEntrada.readlines():
-            linha = linha.rstrip('\n').split(' ')
-            transicaoSaida.append(linha)
-
-        self.set_transicaoSaida(transicaoSaida)
-        
+        index = 0
+        if ['-----'] in transicao:
+            index = transicao.index(["-----"])
+            transicao.remove(["-----"])
+        self.set_transicaoEntrada(transicao[:index])
+        self.set_transicaoSaida(transicao[index:])
 
         ''' Fechando o arquivo'''
         arqEntrada.close()
@@ -124,7 +121,7 @@ class Moore(object):
 
         for transE in self.get_transicaoEntrada():
             arquivo.write((" ".join(transE)) + '\n')
-        
+
         arquivo.write('-----\n')
 
         for transS in self.get_transicaoSaida():
