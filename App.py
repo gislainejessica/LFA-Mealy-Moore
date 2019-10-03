@@ -51,6 +51,7 @@ def main(argv):
             alfabetoSaida = arqEntrada.readline()[:-1].split(' ')
             mealy.set_alfabetoSaida(alfabetoSaida)
 
+            '''Erro em logica de transicao'''
             transicao = []
             while arqEntrada.readline() != '':
                 linha = arqEntrada.readline()[:-1].split(' ')
