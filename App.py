@@ -14,21 +14,21 @@ def main(argv):
         nome = arqEntrada.readline()[:-1]
         arqEntrada.close()
 
-        if nome == 'Moore':
+        if nome.lower() == 'moore':
             print('Já sei que é Moore \\0/')
             ''' Criar instância de Classe Moore '''
             moore = Moore()
-            moore.le_maquina_moore(nomeEntrada)
+            moore.le_moore(nomeEntrada)
             saidaConverte = moore.converte()
 
             moore.imprime(nomeSaida)
 
-        elif nome == 'Mealy':
+        elif nome.lower() == 'mealy':
 
             print('Já sei que é Mealy \\0/')
             ''' Instância de Classe Mealy '''
             mealy = Mealy()
-            mealy.le_arquivo(nomeEntrada)
+            mealy.le_mealy(nomeEntrada)
             saidaConverte = mealy.converte()
 
             mealy.imprime(nomeSaida)

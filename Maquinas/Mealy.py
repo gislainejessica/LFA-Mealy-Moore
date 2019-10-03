@@ -1,9 +1,9 @@
-
 class Mealy(object):
-    ''' Receber paramentros para inicializar a classes com os valores lidos
+    """ Receber paramentros para inicializar a classes com os valores lidos
         Por enquanto, a classe tá inicializando com valores default
-    '''
-    def __init__(self, nome ="", estados = [], alfabetoEntrada= [], inicial= [], finais= [], alfabetoSaida= [], transicao=[]):
+    """
+
+    def __init__(self, nome="", estados=[], alfabetoEntrada=[], inicial=[], finais=[], alfabetoSaida=[], transicao=[]):
         self.nome = nome
         self.estados = estados
         self.alfabetoEntrada = alfabetoEntrada
@@ -11,7 +11,6 @@ class Mealy(object):
         self.finais = finais
         self.alfabetoSaida = alfabetoSaida
         self.transicao = transicao
-
 
     '''Getters e Setters'''
 
@@ -52,39 +51,35 @@ class Mealy(object):
         self.alfabetoSaida = alfabetoSaida
 
     def get_transicao(self):
-            return self.transicao
+        return self.transicao
 
     def set_transicao(self, transicao):
         self.transicao = transicao
 
-    def le_arquivo(self, nomeEntrada):
+    def le_mealy(self, nomeEntrada):
         arqEntrada = open(nomeEntrada, 'r')
-        self.set_nome(arqEntrada.readline()[:-1])
+        self.set_nome(arqEntrada.readline().rstrip('\n'))
 
         ''' Logica para inicializar classe com valores'''
-        estados = arqEntrada.readline()[:-1].split(' ')
+        estados = arqEntrada.readline().rstrip('\n').split(' ')
         self.set_estados(estados)
 
-        alfabetoEntrada = arqEntrada.readline()[:-1].split(' ')
+        alfabetoEntrada = arqEntrada.readline().rstrip('\n').split(' ')
         self.set_alfabetoEntrada(alfabetoEntrada)
 
-        inicial = arqEntrada.readline()[:-1].split(' ')
+        inicial = arqEntrada.readline().rstrip('\n').split(' ')
         self.set_inicial(inicial)
 
-        finais = arqEntrada.readline()[:-1].split(' ')
+        finais = arqEntrada.readline().rstrip('\n').split(' ')
         self.set_finais(finais)
 
-        alfabetoSaida = arqEntrada.readline()[:-1].split(' ')
+        alfabetoSaida = arqEntrada.readline().rstrip('\n').split(' ')
         self.set_alfabetoSaida(alfabetoSaida)
 
-        '''Erro em logica de leitura de transicao- slato de linhas'''
         transicao = []
-        linha = arqEntrada.readline()[:-1]
-        print(linha)
-        while arqEntrada.readline() != '':
+        for linha in arqEntrada.readlines():
+            linha = linha.rstrip('\n').split()
             transicao.append(linha)
-            linha = arqEntrada.readline()[:-1]
-            print(linha)
 
         self.set_transicao(transicao)
 
@@ -93,10 +88,12 @@ class Mealy(object):
         return 0
 
     ''' Converte essa classe para Moore'''
+
     def converte(self):
         return
 
     ''' Imprime seus atributos em um arquivo, formatado no padrão pedido'''
+
     def imprime(self, nome_arquivo):
         arquivo = open(nome_arquivo, "a")
 
@@ -108,7 +105,7 @@ class Mealy(object):
         arquivo.write((" ".join(self.get_alfabetoSaida())) + '\n')
 
         for trans in self.get_transicao():
-            arquivo.write(trans + '\n')
+            arquivo.write((" ".join(trans)) + '\n')
 
         ''' Fechando o arquivo'''
         arquivo.close()
