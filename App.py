@@ -21,19 +21,29 @@ def main(argv):
             ''' Criar instância de Classe Moore '''
             moore = Moore()
             arqSaida = moore.le_moore(nomeEntrada)
-            saidaConverte = moore.converte()
 
-            moore.imprime(nomeSaida)
+            if len(moore.get_transicaoSaida()[0]) == 1:
+                mealyConvertido = moore.converte_para_mealy()
+                print('Conversão realizada com sucesso')
+                mealyConvertido.imprime(nomeSaida)
+            else:
+                print('Não é possível realizar a convesão, pois o estdado inicial gera uma saída')
+                moore.imprime(nomeSaida)
 
         elif nome.lower() == 'mealy':
 
             print('Já sei que é Mealy \\0/')
             ''' Instância de Classe Mealy '''
             mealy = Mealy()
-            arqSaida =mealy.le_mealy(nomeEntrada)
-            saidaConverte = mealy.converte()
+            arqSaida = mealy.le_mealy(nomeEntrada)
+            mooreConvertido = mealy.converte_para_moore()
+            if mooreConvertido:
+                print('Conversão realizada com sucesso')
+                mooreConvertido.imprime(nomeSaida)
 
-            mealy.imprime(nomeSaida)
+            else:
+                print('Erro ao realizar conversão realizada com sucesso')
+                mealy.imprime(nomeSaida)
         else:
             print('Maquina não identificada :-( ')
 

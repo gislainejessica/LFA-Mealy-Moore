@@ -89,7 +89,7 @@ class Mealy(object):
 
     ''' Converte essa classe para Moore'''
 
-    def converte(self):
+    def converte_para_moore(self):
         return
 
     ''' Imprime seus atributos em um arquivo, formatado no padrão pedido'''
