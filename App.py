@@ -14,11 +14,13 @@ def main(argv):
         nome = arqEntrada.readline()[:-1]
         arqEntrada.close()
 
+        arqSaida = open(nomeSaida,'w')
+
         if nome.lower() == 'moore':
             print('Já sei que é Moore \\0/')
             ''' Criar instância de Classe Moore '''
             moore = Moore()
-            moore.le_moore(nomeEntrada)
+            arqSaida = moore.le_moore(nomeEntrada)
             saidaConverte = moore.converte()
 
             moore.imprime(nomeSaida)
@@ -28,12 +30,14 @@ def main(argv):
             print('Já sei que é Mealy \\0/')
             ''' Instância de Classe Mealy '''
             mealy = Mealy()
-            mealy.le_mealy(nomeEntrada)
+            arqSaida =mealy.le_mealy(nomeEntrada)
             saidaConverte = mealy.converte()
 
             mealy.imprime(nomeSaida)
         else:
             print('Maquina não identificada :-( ')
+
+        arqSaida.close()
     else:
         print('Numero de arqumentos insuficiente (Insira parametros)')
 

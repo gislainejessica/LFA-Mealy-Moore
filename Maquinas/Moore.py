@@ -66,27 +66,27 @@ class Moore(object):
         self.transicaoSaida = transicaoSaida
 
     def le_moore(self, nomeEntrada):
-        arqEntrada = open(nomeEntrada, 'r')
-        self.set_nome(arqEntrada.readline().rstrip('\n'))
+        arquivo = open(nomeEntrada, 'r')
+        self.set_nome(arquivo.readline().rstrip('\n'))
 
         ''' Logica para inicializar classe com valores'''
-        estados = arqEntrada.readline().rstrip('\n').split(' ')
+        estados = arquivo.readline().rstrip('\n').split(' ')
         self.set_estados(estados)
 
-        alfabetoEntrada = arqEntrada.readline().rstrip('\n').split(' ')
+        alfabetoEntrada = arquivo.readline().rstrip('\n').split(' ')
         self.set_alfabetoEntrada(alfabetoEntrada)
 
-        inicial = arqEntrada.readline().rstrip('\n').split(' ')
+        inicial = arquivo.readline().rstrip('\n').split(' ')
         self.set_inicial(inicial)
 
-        finais = arqEntrada.readline().rstrip('\n').split(' ')
+        finais = arquivo.readline().rstrip('\n').split(' ')
         self.set_finais(finais)
 
-        alfabetoSaida = arqEntrada.readline().rstrip('\n').split(' ')
+        alfabetoSaida = arquivo.readline().rstrip('\n').split(' ')
         self.set_alfabetoSaida(alfabetoSaida)
 
         transicao= []
-        for linha in arqEntrada.readlines():
+        for linha in arquivo.readlines():
             linha = linha.rstrip('\n')
             if linha != '':
                 transicao.append(linha.split(' '))
@@ -99,8 +99,8 @@ class Moore(object):
         self.set_transicaoSaida(transicao[index:])
 
         ''' Fechando o arquivo'''
-        arqEntrada.close()
-        return 0
+        arquivo.close()
+        return arquivo
 
     ''' Converte essa classe para Mealy'''
 
