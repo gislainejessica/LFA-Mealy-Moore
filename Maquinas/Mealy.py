@@ -12,14 +12,6 @@ class Mealy(object):
         self.alfabetoSaida = alfabetoSaida
         self.transicao = transicao
 
-        # self.nome = 'Mealy'
-        # self.estados = ['s*', 's1', 's2']
-        # self.alfabetoEntrada = ['a','b','c']
-        # self.inicial = ['s*']
-        # self.finais = ['--']
-        # self.alfabetoSaida = ['T', 'F', 'O']
-        ''' Função de Transição... Thinking '''
-
 
     '''Getters e Setters'''
 
@@ -65,6 +57,40 @@ class Mealy(object):
     def set_transicao(self, transicao):
         self.transicao = transicao
 
+    def le_arquivo(self, nomeEntrada):
+        arqEntrada = open(nomeEntrada, 'r')
+        self.set_nome(arqEntrada.readline()[:-1])
+
+        ''' Logica para inicializar classe com valores'''
+        estados = arqEntrada.readline()[:-1].split(' ')
+        self.set_estados(estados)
+
+        alfabetoEntrada = arqEntrada.readline()[:-1].split(' ')
+        self.set_alfabetoEntrada(alfabetoEntrada)
+
+        inicial = arqEntrada.readline()[:-1].split(' ')
+        self.set_inicial(inicial)
+
+        finais = arqEntrada.readline()[:-1].split(' ')
+        self.set_finais(finais)
+
+        alfabetoSaida = arqEntrada.readline()[:-1].split(' ')
+        self.set_alfabetoSaida(alfabetoSaida)
+
+        '''Erro em logica de leitura de transicao- slato de linhas'''
+        transicao = []
+        linha = arqEntrada.readline()[:-1]
+        print(linha)
+        while arqEntrada.readline() != '':
+            transicao.append(linha)
+            linha = arqEntrada.readline()[:-1]
+            print(linha)
+
+        self.set_transicao(transicao)
+
+        ''' Fechando o arquivo'''
+        arqEntrada.close()
+        return 0
 
     ''' Converte essa classe para Moore'''
     def converte(self):
@@ -82,8 +108,9 @@ class Mealy(object):
         arquivo.write((" ".join(self.get_alfabetoSaida())) + '\n')
 
         for trans in self.get_transicao():
-            arquivo.write((" ".join(trans)) + '\n')
+            arquivo.write(trans + '\n')
 
+        ''' Fechando o arquivo'''
         arquivo.close()
 
-        return arquivo
+        return 0

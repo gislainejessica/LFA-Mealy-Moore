@@ -11,7 +11,16 @@ class Moore(object):
         self.finais = ['--']
         self.alfabetoSaida = ['T', 'F', 'O']
         ''' Função de Transição... Thinking '''
-        
+    def le_maquina_moore(self,nomeEntrada):
+        arqEntrada = open(nomeEntrada, 'r')
+
+        while arqEntrada.readline() != '':
+            linha = arqEntrada.readline()
+            ''' Definir logica para inicializar classe com valores'''
+
+        arqEntrada.close()
+        return 0
+
     ''' Converte essa classe para Mealy'''
     def converte(self):
         return 
