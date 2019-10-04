@@ -23,7 +23,8 @@ def main(argv):
             arqSaida = moore.le_moore(nomeEntrada)
 
             if len(moore.get_transicaoSaida()[0]) == 1:
-                mealyConvertido = moore.converte_para_mealy()
+                mealyConvertido = Mealy()
+                mealyConvertido = moore.converte_para_mealy(mealyConvertido)
                 print('Conversão realizada com sucesso')
                 mealyConvertido.imprime(nomeSaida)
             else:
@@ -36,7 +37,9 @@ def main(argv):
             ''' Instância de Classe Mealy '''
             mealy = Mealy()
             arqSaida = mealy.le_mealy(nomeEntrada)
-            mooreConvertido = mealy.converte_para_moore()
+
+            mooreConvertido = Moore()
+            mooreConvertido = mealy.converte_para_moore(mooreConvertido)
             if mooreConvertido:
                 print('Conversão realizada com sucesso')
                 mooreConvertido.imprime(nomeSaida)

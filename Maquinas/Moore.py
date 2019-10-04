@@ -1,7 +1,3 @@
-from typing import TextIO
-
-from Maquinas.Mealy import Mealy
-
 
 class Moore(object):
     """ Receber paramentros para inicializar a classes com os valores lidos
@@ -106,8 +102,7 @@ class Moore(object):
 
     ''' Converte essa classe para Mealy'''
 
-    def converte_para_mealy(self):
-        mealy = Mealy()
+    def converte_para_mealy(self, mealy):
 
         mealy.set_nome('mealy')
         mealy.set_estados(self.get_estados())
@@ -119,10 +114,10 @@ class Moore(object):
         transicao = []
         for trans in self.get_transicaoEntrada():
             estadoSaidaIndex = len(trans) -1
-            for transE in self.get_transicaoSaida():
-                if trans[estadoSaidaIndex] in transE:
+            for transS in self.get_transicaoSaida():
+                if trans[estadoSaidaIndex] in transS:
                     if len(self.get_transicaoSaida()) >= 1:
-                        trans.append(transE[1])
+                        trans.append(transS[1])
             transicao.append(trans)
 
         mealy.set_transicao(transicao)
