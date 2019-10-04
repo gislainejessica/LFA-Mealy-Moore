@@ -17,7 +17,7 @@ def main(argv):
         arqSaida = open(nomeSaida,'w')
 
         if nome.lower() == 'moore':
-            print('Já sei que é Moore \\0/')
+            print('Já sei que é Moore 0/')
             ''' Criar instância de Classe Moore '''
             moore = Moore()
             arqSaida = moore.le_moore(nomeEntrada)
@@ -32,7 +32,7 @@ def main(argv):
 
         elif nome.lower() == 'mealy':
 
-            print('Já sei que é Mealy \\0/')
+            print('Já sei que é Mealy 0/')
             ''' Instância de Classe Mealy '''
             mealy = Mealy()
             arqSaida = mealy.le_mealy(nomeEntrada)
