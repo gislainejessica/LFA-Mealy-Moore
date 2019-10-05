@@ -2,7 +2,6 @@ from typing import TextIO
 
 from Maquinas.Mealy import Mealy
 
-
 class Moore(object):
     """ Receber paramentros para inicializar a classes com os valores lidos
         Por enquanto, a classe tá inicializando com valores default
@@ -122,13 +121,14 @@ class Moore(object):
             for transE in self.get_transicaoSaida():
                 if trans[estadoSaidaIndex] in transE:
                     if len(self.get_transicaoSaida()) >= 1:
-                        trans.append(transE[1])
+                        ''' Se transE == 1 => Transição vazia'''
+                        if (len(transE) > 1): 
+                            trans.append(transE[1])
             transicao.append(trans)
 
         mealy.set_transicao(transicao)
 
         return mealy
-
 
     ''' Imprime seus atributos em um arquivo, formatado no padrão pedido'''
 
