@@ -21,7 +21,15 @@ def main(argv):
             ''' Criar instância de Classe Moore '''
             moore = Moore()
             arqSaida = moore.le_moore(nomeEntrada)
-            if len(moore.get_transicaoSaida()[0]) == 1:
+            print(len(moore.get_transicaoSaida()[0]))
+            ''' Se leitura do estado inicial não for mais que 1, verificar se não leu uma string vazia depois'''
+            vazio=False
+            if (len(moore.get_transicaoSaida()[0]) > 1):
+                simbolo=moore.get_transicaoSaida()[0][1].split()
+                if not simbolo:
+                    vazio=True
+            ''' Fim da verificação de simbolos vazios'''    
+            if (len(moore.get_transicaoSaida()[0]) == 1 or vazio):
                 mealyConvertido = moore.converte_para_mealy()
                 print('Conversão realizada com sucesso')
                 mealyConvertido.imprime(nomeSaida)

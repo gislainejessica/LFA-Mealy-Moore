@@ -121,7 +121,7 @@ class Moore(object):
             for transE in self.get_transicaoSaida():
                 if trans[estadoSaidaIndex] in transE:
                     if len(self.get_transicaoSaida()) >= 1:
-                        ''' Se transE == 1 => Transição vazia'''
+                        ''' Se transE == 1 => Transição vazia (Se não tiver espaço depois do estado)'''
                         if (len(transE) > 1): 
                             trans.append(transE[1])
             transicao.append(trans)
