@@ -1,0 +1,11 @@
+Mealy
+q0 q1 q2
+a b
+q0
+q2
+0 1
+q0 a q1 0 
+q0 b q2 1 
+q1 a q2 0 
+q2 b q1 1
+ 

@@ -1,0 +1,16 @@
+Mealy
+q0 q1 q2 q3 q4 q5
+a b
+q0
+q5
+x y
+q0 a q1 x
+q0 b q2 y
+q1 a q3 x
+q1 b q4 y
+q2 a q3 y
+q2 b q4 x
+q3 a q5 x
+q3 b q5 y
+q4 a q5 y
+q4 b q5 x
