@@ -89,9 +89,11 @@ class Moore(object):
                 transicao.append(linha.split(' '))
 
         index = 0
+        
         if ['-----'] in transicao:
             index = transicao.index(["-----"])
             transicao.remove(["-----"])
+
         self.set_transicaoEntrada(transicao[:index])
         self.set_transicaoSaida(transicao[index:])
 

@@ -4,41 +4,33 @@ import os
 from Maquinas.Moore import Moore
 from Maquinas.Mealy import Mealy
 
-
 def main(argv):
-<<<<<<< HEAD
     '''Ler arquivos da linha de comando argv e args'''
     if (len(argv) == 2):
         entrada = os.path.basename(argv[0])
-=======
-    """Ler arquivos da linha de comando argv e args"""
-    if len(argv) == 2:
->>>>>>> 3637f7c564129c3720e70d52275548341d3d2fab
-        nomeEntrada = argv[0]
+        nomeEntrada = entrada
         nomeSaida = argv[1]
 
-        """ Criar variaveis para manipular leitura e escrita de arquivos"""
+        ''' Criar variaveis para manipular leitura e escrita de arquivos'''
         arqEntrada = open(nomeEntrada, 'r')
         nome = arqEntrada.readline()[:-1]
         arqEntrada.close()
 
-        arqSaida = open(nomeSaida, 'w')
+        arqSaida = open(nomeSaida,'w')
 
         if nome.lower() == 'moore':
-            print('Já sei que é Moore 0/')
-            """ Criar instância de Classe Moore """
+            print('Já sei que é Moore \\0/')
+            ''' Criar instância de Classe Moore '''
             moore = Moore()
             arqSaida = moore.le_moore(nomeEntrada)
-
-            print(len(moore.get_transicaoSaida()[0]))
-            """ Se leitura do estado inicial não for mais que 1, verificar se não leu uma string vazia depois"""
-            vazio = False
-            if len(moore.get_transicaoSaida()[0]) > 1:
-                simbolo = moore.get_transicaoSaida()[0][1].split()
+            ''' Se leitura do estado inicial não for mais que 1, verificar se não leu uma string vazia depois'''
+            vazio=False
+            if (len(moore.get_transicaoSaida()[0]) > 1):
+                simbolo=moore.get_transicaoSaida()[0][1].split()
                 if not simbolo:
-                    vazio = True
-            """ Fim da verificação de simbolos vazios"""
-            if len(moore.get_transicaoSaida()[0]) == 1 or vazio:
+                    vazio=True
+            ''' Fim da verificação de simbolos vazios'''    
+            if (len(moore.get_transicaoSaida()[0]) == 1 or vazio):
                 mealyConvertido = Mealy()
                 mealyConvertido = moore.converte_para_mealy(mealyConvertido)
                 print('Conversão realizada com sucesso')
@@ -49,13 +41,11 @@ def main(argv):
 
         elif nome.lower() == 'mealy':
 
-            print('Já sei que é Mealy 0/')
-            """ Instância de Classe Mealy """
+            print('Já sei que é Mealy \\0/')
+            ''' Instância de Classe Mealy '''
             mealy = Mealy()
             arqSaida = mealy.le_mealy(nomeEntrada)
-
-            mooreConvertido = Moore()
-            mooreConvertido = mealy.converte_para_moore(mooreConvertido)
+            mooreConvertido = mealy.converte_para_moore()
             if mooreConvertido:
                 print('Conversão realizada com sucesso')
                 mooreConvertido.imprime(nomeSaida)
@@ -70,6 +60,6 @@ def main(argv):
     else:
         print('Numero de arqumentos insuficiente (Insira parametros)')
 
-
+       
 if __name__ == '__main__':
     main(sys.argv[1:])

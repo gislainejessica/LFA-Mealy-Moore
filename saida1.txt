@@ -4,8 +4,8 @@ a b c
 q0
 q1 q1'
 0 1
-q0 b q1   
-q0 a q1   
+q0 b q1  
+q0 a q1  
 q0 c q1 1
 q1 a q0 
 q1 b q1' 0
