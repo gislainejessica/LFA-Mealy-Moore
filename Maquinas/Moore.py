@@ -1,7 +1,3 @@
-from typing import TextIO
-
-from Maquinas.Mealy import Mealy
-
 class Moore(object):
     """ Receber paramentros para inicializar a classes com os valores lidos
         Por enquanto, a classe tá inicializando com valores default
@@ -70,7 +66,7 @@ class Moore(object):
         arquivo = open(nomeEntrada, 'r')
         self.set_nome(arquivo.readline().rstrip('\n'))
 
-        ''' Logica para inicializar classe com valores'''
+        """ Logica para inicializar classe com valores"""
         estados = arquivo.readline().rstrip('\n').split(' ')
         self.set_estados(estados)
 
@@ -86,7 +82,7 @@ class Moore(object):
         alfabetoSaida = arquivo.readline().rstrip('\n').split(' ')
         self.set_alfabetoSaida(alfabetoSaida)
 
-        transicao= []
+        transicao = []
         for linha in arquivo.readlines():
             linha = linha.rstrip('\n')
             if linha != '':
@@ -99,14 +95,13 @@ class Moore(object):
         self.set_transicaoEntrada(transicao[:index])
         self.set_transicaoSaida(transicao[index:])
 
-        ''' Fechando o arquivo'''
+        """ Fechando o arquivo"""
         arquivo.close()
         return arquivo
 
-    ''' Converte essa classe para Mealy'''
+    """ Converte essa classe para Mealy"""
 
-    def converte_para_mealy(self):
-        mealy = Mealy()
+    def converte_para_mealy(self, mealy):
 
         mealy.set_nome('mealy')
         mealy.set_estados(self.get_estados())
@@ -117,20 +112,21 @@ class Moore(object):
 
         transicao = []
         for trans in self.get_transicaoEntrada():
-            estadoSaidaIndex = len(trans) -1
-            for transE in self.get_transicaoSaida():
-                if trans[estadoSaidaIndex] in transE:
+            estadoSaidaIndex = len(trans) - 1
+            for transS in self.get_transicaoSaida():
+                if trans[estadoSaidaIndex] in transS:
                     if len(self.get_transicaoSaida()) >= 1:
-                        ''' Se transE == 1 => Transição vazia (Se não tiver espaço depois do estado)'''
-                        if (len(transE) > 1): 
-                            trans.append(transE[1])
+
+                        """ Se transE == 1 => Transição vazia (Se não tiver espaço depois do estado)"""
+                        if len(transS) > 1:
+                            trans.append(transS[1])
             transicao.append(trans)
 
         mealy.set_transicao(transicao)
 
         return mealy
 
-    ''' Imprime seus atributos em um arquivo, formatado no padrão pedido'''
+    """ Imprime seus atributos em um arquivo, formatado no padrão pedido"""
 
     def imprime(self, nome_arquivo):
         arquivo = open(nome_arquivo, "a")
@@ -150,7 +146,7 @@ class Moore(object):
         for transS in self.get_transicaoSaida():
             arquivo.write((" ".join(transS)) + '\n')
 
-        ''' Fechando o arquivo'''
+        """ Fechando o arquivo"""
         arquivo.close()
 
         return 0

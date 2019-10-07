@@ -1,3 +1,4 @@
+
 class Mealy(object):
     """ Receber paramentros para inicializar a classes com os valores lidos
         Por enquanto, a classe tá inicializando com valores default
@@ -89,8 +90,37 @@ class Mealy(object):
 
     ''' Converte essa classe para Moore'''
 
-    def converte_para_moore(self):
-        return
+    def converte_para_moore(self, moore):
+
+        moore.set_nome('moore')
+
+        '''Os estados devem ser atualizados posteriormente'''
+        moore.set_estados(self.get_estados())
+        moore.set_alfabetoEntrada(self.get_alfabetoEntrada())
+        moore.set_inicial(self.get_inicial())
+        moore.set_finais(self.get_finais())
+        moore.set_alfabetoSaida(self.get_alfabetoSaida())
+
+
+        transS = []
+        for transicao in self.get_transicao():
+            if (" ".join(transicao[2:])).split(' ') != ['']:
+                transSaidaItem = (" ".join(transicao[2:])).split(' ')
+
+            transS.append(transSaidaItem)
+            print(transSaidaItem)
+            if transSaidaItem in transS:
+                transSaidaItem[0] = transSaidaItem[0] + "'"
+        print(transS)
+
+        # transSaida = []
+        # for i in range(len(transS)):
+        #     estado = transS[i][0]
+        #     saida = transS[i][1]
+        #     if [estado] in transSaida:
+        #     print(estado, saida)
+
+        return moore
 
     ''' Imprime seus atributos em um arquivo, formatado no padrão pedido'''
 
