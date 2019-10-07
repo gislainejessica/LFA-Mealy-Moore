@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 import sys
+import os
 from Maquinas.Moore import Moore
 from Maquinas.Mealy import Mealy
 
 def main(argv):
     '''Ler arquivos da linha de comando argv e args'''
     if (len(argv) == 2):
+        entrada = os.path.basename(argv[0])
         nomeEntrada = argv[0]
         nomeSaida = argv[1]
 

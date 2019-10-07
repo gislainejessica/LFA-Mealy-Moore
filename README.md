@@ -1,9 +1,25 @@
 # LFA-Mealy-Moore
+
+Autores: **Gislaine e Ivana**
+
 #### Pra rodar via linha de comando a aplicação
+- Para rodar no terminal colocar `python3`, sequido do arquivo que precisa ser executado `App.py`, 
+então colocar o nome da arquivo de entrada e o nome do arquivo de saida. 
 
-`python3 App.py entrada.txt saida.txt` 
+    **Obs. :** Para rodar assim o arquivo de entrada tem que está no mesmo diretório do `App.py`. 
 
-* Autores: **Gislaine e Ivana**
+    Ex: 
+    ```py 
+    python3 App.py entrada.txt saida.txt 
+
+- O programa pode ser executado indicando o caminho do arquivo de entrada, como indicado. Identificando caminho do arquivo, por completo, como seque:
+
+    Ex: 
+    ```py 
+    python3 App.py  /home/gislaine/LFA-Mealy-Moore/Entradas/Moore/entrada1.txt  saida.txt
+
+A saida para ambos os casos serão gerados na mesma pasta de `App.py`
+
 
 *Uma descrição breve da estrutura do codigo fonte*
 
